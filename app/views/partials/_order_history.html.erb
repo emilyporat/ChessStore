@@ -1,0 +1,24 @@
+<h5>Order History</h5>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="125">Order Number</th>
+      <th width="125">Date Placed</th>
+      <th width="125">Total</th>
+      <th width="220">Shipped To</th>
+      <th width="125">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_history.each do |order| %>
+      <tr>
+        <td><%= link_to order.id, order_path(order) %></td>
+        <td><%= order.date.strftime("%m/%d/%Y") %></td>
+        <td><%= "$" + sprintf('%.2f', order.grand_total).to_s %></td>
+        <td><%= order.school.name %></td>
+        <td><%= order.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

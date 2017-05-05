@@ -20,6 +20,10 @@ class OrderItem < ActiveRecord::Base
     return nil if !date.respond_to?(:future?) || date.future?
     self.item.price_on_date(date) * self.quantity
   end
+
+  def self.chronological
+    joins(:order).order("orders.date ASC")
+  end
   
   def shipped
     set_shipped_on_date_to_today

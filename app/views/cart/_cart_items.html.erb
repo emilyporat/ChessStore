@@ -1,0 +1,22 @@
+<h3> Your Shopping Cart </h3>
+<br>
+
+<% @cart_items.each do |cart_item|  %>
+
+  <% i = cart_item.item %>
+  <%= link_to i.name, item_path(i) %> 
+  <br>
+  <%= "$" + sprintf('%.2f', i.current_price).to_s unless i.current_price.nil? %> 
+  <br>
+  <% puts i.id %>
+  <%= "Quantity: " + cart_item.quantity.to_s %> 
+  <br>
+  <%= link_to "Remove", cart_remove_path(i.id) %> 
+  <br>
+  <br>
+
+<% end %>
+
+<%= "Grand total " + "$" + sprintf('%.2f', @total).to_s %>
+
+<%= link_to "Place order", new_order_path %>

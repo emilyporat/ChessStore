@@ -54,6 +54,18 @@ class Order < ActiveRecord::Base
     credit_card.type.nil? ? "N/A" : credit_card.type.name
   end
 
+  def status
+    o_items = self.order_items
+    o_items.each do |o|
+      if o.shipped_on.nil?
+        return "Unshipped"
+      end
+    end
+    return "Shipped"
+  end
+
+
+
   # Callbacks
   before_create :set_date_if_not_given
   before_destroy :is_destroyable?

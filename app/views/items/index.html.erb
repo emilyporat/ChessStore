@@ -1,4 +1,9 @@
+<% if current_user != nil and (current_user.role == "admin" or current_user.role == "manager")%>
+  <% sidebar = "inactive_items" %>
+<% else %>
+  <% sidebar = nil %>
+<% end %>
 <%= render partial: "partials/index_structure", locals: {model_name: "item", 
                                                          primary: "active_items", 
                                                          secondary: nil,
-                                                         sidebar: "inactive_items"} %>
+                                                         sidebar: sidebar} %>

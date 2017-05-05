@@ -1,0 +1,13 @@
+<h5>Address Book</h5>
+
+<% @address_book.each do |school| %>
+
+  <%= school.name %><br />
+  <%= school.street_1 %><br />
+  <% unless school.street_2.blank? %>
+    <%= school.street_2 %><br />
+  <% end %>
+  <%= school.city %>, <%= school.state %> <%= school.zip %>
+
+<% end %>
+<br>

@@ -1,12 +1,28 @@
 <div class="row">
-  <div class="small-7 columns">
-    <%= render :partial => "item_details" %>
-  </div>
-  <div class="small-5 columns">
-    <%= render :partial => "price_history" unless @price_history.empty?%>
-    <%= render :partial => "similar_items" unless @similar_items.empty?%>
-  </div>
+  <% if !logged_in? or current_user.role == "customer" %>
+      <% role = "guest" %>
+	  <div class="small-7 columns">
+	    <%= render :partial => "customer_item_details" %>
+	  </div>
+	  <div class = "row">
+		<div class = "small-4 columns right" id = "item_show">
+	  </div>
+	  </div>
+  <% end %>
+  <% if logged_in? and (current_user.role == "admin" or current_user.role == "manager")  %>
+	  <div class="small-7 columns">
+	    <%= render :partial => "manager_item_details" %>
+	  </div>
+  <% end %>
+  <% if logged_in? %>
+      <% role = current_user.role %>
+	  <div class="small-5 columns">
+	    <%= render :partial => "price_history" unless @price_history.empty? or current_user.role == "customer"%>
+	    <%= render :partial => "similar_items" unless @similar_items.empty? or current_user.role == "customer"%>
+	  </div>
+  <% end %>
 </div>
 
 <!-- Add buttons to list all, edit project or destroy object -->
-<%= render partial: "partials/object_options", locals: {model_name: "item", object: @item}  %>
+<%= render partial: "partials/object_options", locals: {model_name: "item", object: @item, role: role}  %>
+

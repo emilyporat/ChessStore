@@ -1,0 +1,12 @@
+<h5>Account Information</h5>
+
+Email: <%= current_user.email %>
+<br>
+Username: <%= current_user.username %>
+<br>
+Name: <%= current_user.proper_name %>
+<br>
+Phone: <%= current_user.phone %>
+<br>
+
+<%= link_to 'Edit', edit_user_path(current_user) %>

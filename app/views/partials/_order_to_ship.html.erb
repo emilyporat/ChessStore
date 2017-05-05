@@ -1,0 +1,26 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th width="260">Name</th>
+      <th width="60">Quantity</th>
+      <th width="180">Street</th>
+      <th width="80">City</th>
+      <th width="20">State</th>
+      <th width="20">ZIP</th>
+      <th width="100">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items_to_ship.each do |o_item| %>
+      <tr>
+        <td><%= o_item.item.name %></td>
+        <td><%= o_item.quantity %></td>
+        <td><%= o_item.order.school.street_1 %></td>
+        <td><%= o_item.order.school.city %></td>
+        <td><%= o_item.order.school.state %></td>
+        <td><%= o_item.order.school.zip %></td>
+        <td><%= o_item.order.date.strftime("%m/%d/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

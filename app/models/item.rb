@@ -1,4 +1,5 @@
 class Item < ActiveRecord::Base
+  include ChessStoreHelpers::Cart
 
   # List of allowable categories
   CATEGORIES = [['Boards','boards'],['Pieces','pieces'],['Clocks','clocks'],['Supplies','supplies']]
@@ -32,7 +33,7 @@ class Item < ActiveRecord::Base
 
   # Other methods
   attr_reader :destroyable
-  
+
   def current_price
     curr = self.item_prices.wholesale.current.first
     if curr.nil?
@@ -72,6 +73,14 @@ class Item < ActiveRecord::Base
   def reorder?
     reorder_level >= inventory_level
   end
+
+  # def add_to_cart
+  #   add_item_to_cart(self.id)
+  # end
+
+  # def remove_from_cart
+  #   remove_item_from_cart(self.id)
+  # end
 
   private
   def is_destroyable?

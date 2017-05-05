@@ -85,6 +85,16 @@ class UserTest < ActiveSupport::TestCase
       deny @shipper.role?(:admin)
     end
 
+    should "user_schools method that returns a list of all the schools a user has shipped to" do
+      create_customer_users
+      create_schools
+      create_orders
+      assert_equal ["Fairview Elementary School"], @karen.user_schools.map(&:name)
+      destroy_customer_users
+      destroy_schools
+      destroy_orders
+    end
+
     should "have a working scope called active" do
       assert_equal ["inventory","mark","shipper","tank"], User.active.all.map(&:username).sort
     end

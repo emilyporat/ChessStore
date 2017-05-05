@@ -1,0 +1,15 @@
+<h2> <%= "Order " + @order.id.to_s %> </h2>
+<br>
+<% order_date = @order.date %>
+
+<% @items.each do |o| %>
+  
+  <h5> <%= o.item.name %> </h5>
+  <%= "Quantity: " + o.quantity.to_s %>
+  <br>
+  <%= "Price: " + "$" + sprintf('%.2f', o.item.price_on_date(order_date)).to_s %>
+  <br>
+  <br>
+  
+<% end %>
+

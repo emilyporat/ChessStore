@@ -227,5 +227,9 @@ class OrderTest < ActiveSupport::TestCase
       assert @karen_o3.valid?
     end
 
+    should "have method status that tells us if any item from an order is shipped or unshipped" do
+      assert_equal "Unshipped", @karen_o3.status
+    end
+
   end
 end

@@ -75,6 +75,10 @@ class OrderItemTest < ActiveSupport::TestCase
 
     should "have a working scope called unshipped" do
       assert_equal 6, OrderItem.unshipped.count    
+    end 
+
+    should "have a class method called chronological" do
+      assert_equal [1, 2, 3, 7, 4, 9, 10, 11, 5, 6, 8] , OrderItem.chronological.map(&:id)
     end    
   end
 end

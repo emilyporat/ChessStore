@@ -10,11 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery 
 //= require jquery_ujs
 //= require foundation.min
 //= require_tree .
+//= require jquery_nested_form
 
 $(function() {
   $(document).foundation('topbar', 'reflow');
 });
+
+
+function showDiv() {
+   document.getElementById('welcomeDiv').style.display = "block";
+}

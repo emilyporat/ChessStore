@@ -1,0 +1,13 @@
+<h5> <%= name %> </h5>
+
+<% eval("#{object}").each do |x| %>
+
+  <%= link_to x.name, item_path(x) %> 
+  <br>
+  <%= "$" + sprintf('%.2f', x.current_price).to_s unless x.current_price.nil? %> 
+  <br>
+  <% name = x.name %>
+  <br>
+  <br>
+
+<% end %>
