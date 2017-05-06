@@ -20,7 +20,6 @@ module ChessStoreHelpers
     def add_item_to_cart(item_id)
       if session[:cart].keys.include?(item_id)
         # if item in cart, increment quantity by 1
-        puts session[:cart]
         session[:cart][item_id] += 1
       else
         # add it to the cart
@@ -30,6 +29,16 @@ module ChessStoreHelpers
 
     def get_quantity(item_id)
       return session[:cart][item_id]
+    end
+
+    def remove_one_from_cart(item_id)
+      if session[:cart].keys.include?(item_id)
+        if session[:cart][item_id] > 0
+          session[:cart][item_id] -= 1
+        else
+          session[:cart].delete(item_id)
+        end
+      end
     end
 
     def remove_item_from_cart(item_id)

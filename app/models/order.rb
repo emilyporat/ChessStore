@@ -68,12 +68,14 @@ class Order < ActiveRecord::Base
 
   # Callbacks
   before_create :set_date_if_not_given
+  #before_create :add_school
   before_destroy :is_destroyable?
   # after_destroy :remove_unshipped_order_items
   # after_rollback :remove_remaining_unshipped_order_items
   after_rollback :remove_unshipped_order_items
   
   private
+
   def user_is_active_in_system
     is_active_in_system(:user)
   end

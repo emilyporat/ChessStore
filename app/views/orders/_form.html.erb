@@ -1,0 +1,25 @@
+<div id = "new_order">
+  <%= simple_form_for @order, html: { class: 'form-horizontal', multipart: true } do |f| %>
+    <fieldset>
+      <legend><%= controller.action_name.capitalize %> Order </legend>
+
+      <%= f.input :credit_card_number %>  
+      <%= f.input :expiration_month %> 
+      <%= f.input :expiration_year %>
+      <%= f.label :school_id %><br />
+      <%= f.select :school_id, get_school_options, prompt: "Select ..." %>
+      
+      <% link_to "Click here to add a new school", new_school_path %>
+      <br>
+
+      <div class="form-actions">
+        <br/>
+        <%= f.submit nil, :class => 'button radius' %>
+        <%= link_to 'Cancel', new_order_path, :class => 'button alert radius' %>
+      </div>
+    </fieldset>
+  <% end %>
+
+  <div id="new-school-link"> <%= link_to "Click here to add a new school", new_school_path, remote: true %> </div>
+  <div id="new-school"></div>
+</div>

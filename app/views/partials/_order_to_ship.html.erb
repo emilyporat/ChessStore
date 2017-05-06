@@ -1,6 +1,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th width="190">Check Off</th>
       <th width="260">Name</th>
       <th width="60">Quantity</th>
       <th width="180">Street</th>
@@ -13,6 +14,8 @@
   <tbody>
     <% @items_to_ship.each do |o_item| %>
       <tr>
+        <td><%= link_to raw("<i class='fa fa-check'></i>&nbsp;&nbsp;Ship Item"), 
+        complete_path(o_item.id), :class => 'button tiny radius' %> </td>
         <td><%= o_item.item.name %></td>
         <td><%= o_item.quantity %></td>
         <td><%= o_item.order.school.street_1 %></td>

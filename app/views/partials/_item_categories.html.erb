@@ -7,6 +7,7 @@
   <%= "$" + sprintf('%.2f', x.current_price).to_s unless x.current_price.nil? %> 
   <br>
   <% name = x.name %>
+  <%= link_to "Add to Cart", cart_update_path(x, 1) %> 
   <br>
   <br>
 

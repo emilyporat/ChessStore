@@ -9,6 +9,6 @@ class CreditCardsController < ApplicationController
     if !@credit_card.save
       render action: 'new'
     end
-  end
+  end 
   
 end

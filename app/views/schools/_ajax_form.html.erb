@@ -1,5 +1,5 @@
 <div id = "school_form"> 
-  <%= simple_form_for @school, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <%= simple_form_for @school, html: { class: 'form-horizontal', multipart: true }, remote: true do |f| %>
     <fieldset>
       <legend><%= controller.action_name.capitalize %> School </legend>
 

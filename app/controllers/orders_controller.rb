@@ -3,9 +3,11 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @school = School.new
   end
 
   def show
+    @order = Order.find(params[:id])
     @items = @order.order_items
   end
 
@@ -15,14 +17,12 @@ class OrdersController < ApplicationController
     @order.expiration_month = @order.expiration_month.to_i
     @order.user_id = current_user.id
     @order.grand_total = calculate_cart_items_cost
-    puts @order.save
+    @order.school_id = @school.id
     if @order.save
-      puts "???"
       @order.pay
-      puts "hello"
       save_each_item_in_cart(@order)
-      puts "no?"
-      redirect_to home_path
+      clear_cart
+      redirect_to home_path, notice: "Successfully placed your order!"
     else
       render action: 'new'
     end

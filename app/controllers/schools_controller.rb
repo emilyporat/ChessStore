@@ -1,33 +1,24 @@
 class SchoolsController < ApplicationController
   before_action :check_login
 
-
   def new
     @school = School.new
   end
 
-
   def create
     @school = School.new(school_params)
     if @school.save
-      redirect_to order_path(@school), notice: "Created #{@school.name}."
+      respond_to do |format|
+        name = "Created " + @school.name
+        format.html { redirect_to new_order_path, notice: name } 
+        format.js
+      end
     else
-      render action: 'new'
+      respond_to do |format|
+        format.html { redirect_to new_order_path}
+        format.js 
+      end
     end
-
-    # if @school.save
-    #   format.html { redirect_to @school, notice: 'School was successfully created.' }
-    #   format.json { render action: 'show', status: :created, location: @school }
-    #   # @town = @attraction.town
-    #   # @attractions = @town.attractions.alphabetical.to_a
-    #   format.js
-    # else
-    #   format.html { render action: 'new'}
-    #   format.json { render json: @school.errors, status: :unprocessable_entity }
-    #   # @town = @attraction.town
-    #   # @attractions = @town.attractions.alphabetical.to_a
-    #   format.js 
-    # end
   end
 
   private
