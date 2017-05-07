@@ -13,7 +13,6 @@ class ItemPricesController < ApplicationController
   def create
     @item_price = ItemPrice.new(item_price_params)
     @item_price.start_date = Date.current
-    @item_price.category = "wholesale"
     if @item_price.save
       @item = Item.find_by_id(@item_price.item_id)
       respond_to do |format|

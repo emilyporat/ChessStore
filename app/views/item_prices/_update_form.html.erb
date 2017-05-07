@@ -3,6 +3,7 @@
 
 	    <%= f.input :price, label: 'New Price', input_html: {class: "avg"} %>
 	    <%= f.input :item_id, as: :hidden, input_html: { value: params[:item_id] } %>
+	    <%= f.input :category, as: :hidden, input_html: { value: params[:category] } %>
 
 	    <div class="form-actions">
 	      <%= f.submit nil, :class => 'button radius' %>

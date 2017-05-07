@@ -14,9 +14,15 @@ class PurchasesController < ApplicationController
     @purchase.date = Date.current
     
     if @purchase.save
-      redirect_to purchases_path, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."
+      respond_to do |format|
+        format.html { redirect_to request.referrer, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}s."}
+        format.js
+      end
     else
-      render action: 'new'
+      respond_to do |format|
+        format.html { render action: 'new' }
+        format.js
+      end
     end
   end
 
