@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :schools
   resources :credit_cards
   resources :order_items
-  #resources :cart
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
@@ -25,6 +24,10 @@ Rails.application.routes.draw do
   get 'pieces' => 'items#pieces', as: :pieces
   get 'clocks' => 'items#clocks', as: :clocks
   get 'supplies' => 'items#supplies', as: :supplies 
+
+  # Sub-pages for users
+  get 'employees' => 'users#employees', as: :employees
+  get 'customers' => 'users#customers', as: :customers
 
   # For cart routes
   get 'cart_update/:item_id' => 'cart#update', as: :cart_update

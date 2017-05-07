@@ -1,0 +1,15 @@
+<% if logged_in? %>
+
+  <% if current_user.role == "manager" %>
+
+	<%= render :partial => "users/employees" %>
+
+  <% elsif current_user.role == "admin" %>
+
+    <%= render :partial => "users/employees" %>
+
+    <%= render :partial => "users/customers" %>
+
+  <% end %>
+  
+<% end %>

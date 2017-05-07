@@ -1,0 +1,10 @@
+<h3> <%= @user.proper_name %> </h3>
+
+<%= "Phone: " + @user.phone.to_s %> <br>
+<%= "Email: " + @user.email %> <br>
+<%= "Username: " + @user.username %> <br>
+<%= "Role: " + @user.role %> <br> <br>
+
+<% if @user.role == "customer" and !@order_history.empty? %>
+  <%= render :partial => "partials/order_history" %>
+<% end %>

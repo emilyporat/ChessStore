@@ -1,0 +1,24 @@
+<% if @customers.empty? %>
+  <h4>No active customers at this time.</h4>
+<% else %>
+  <h4>Customers</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="225">Name</th>
+        <th width="150">Phone Number</th>
+        <th width="250">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @customers.each do |user| %>
+        <tr>
+          <td><%= user.proper_name %></td>
+          <td><%= user.phone %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<p>&nbsp;</p>

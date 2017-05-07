@@ -6,7 +6,16 @@ class UsersController < ApplicationController
     @employees = User.all.active.employees.alphabetical
   end
 
+  def customers
+    @customers = User.all.active.customers.alphabetical
+  end
+
+  def employees
+    @employees = User.all.active.employees.alphabetical
+  end
+
   def show
+    @order_history = (current_user.orders.chronological.to_a unless current_user.nil?)
   end
 
   def new

@@ -27,9 +27,14 @@
           <%= link_to "Purchases", purchases_path %>
         </li>
 
-        <!-- options for prices -->
-        <li>
-          <%= link_to "Prices", item_prices_path %>
+        <!-- link to users -->
+        <li class="has-dropdown">
+          <%= link_to "Users", users_path %>
+          <ul class="dropdown">
+            <li><%= link_to "Customer List", customers_path %></li>
+            <li><%= link_to "Employee List", employees_path %></li>
+            <li><%= link_to "Add a User", new_user_path %></li>
+          </ul>
         </li>
       </ul>
 
