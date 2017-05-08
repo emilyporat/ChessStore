@@ -1,19 +1,100 @@
-<% if logged_in? %>
+<div class="contain-to-grid">
 
-  <% if current_user.role == "admin" %>
-    <%= render :partial => 'partials/admin_nav' %>
+  <!-- login button -->
+  <div id="login_top">
+    <div id="login">
+      <% if logged_in? %>
+        <div id="login_small"><%= link_to 'Logout', logout_path %></div>
+        <div id="login_small"><%= link_to image_tag('cart.png'), cart_index_path %></div>
+        <% else %>
+          <div id="login_small"><%= link_to 'Login', login_path %></div>
+        <% end %>
+    </div>
+  </div>
 
-  <% elsif current_user.role == "manager" %>
-    <%= render :partial => 'partials/manager_nav' %>
+  <div id="nav">
+    <div class="name">
+      <div id="chess_img"><%= image_tag('knight.png') %></div>
+      <div id="nav_name"><%= link_to "A&M Chess Store", home_path %></div>
+      <div id="chess_img"><%= image_tag('knight.png', style: "transform: rotateY(180deg);") %></div>
+    </div>
 
-  <% elsif current_user.role == "shipper" %>
-    <%= render :partial => 'partials/shipper_nav' %>
+      <div id = "wrapper">
+        <!-- link to home -->
+        <div id="nav_small"><%= link_to "Home", home_path %></div>
 
-  <% elsif current_user.role == "customer" %>
-    <%= render :partial => 'partials/customer_nav' %>
+        <!-- options for items -->
+        <div class = "dropdown" id = "nav_small">
+          <%= link_to "Items", items_path %>
+            <div class="dropdown-content">
+              <%= link_to "Item List", items_path %>
+              <% puts "LOGGED IN: " + logged_in?.to_s%>
+              <% if logged_in? %>
+                <% if (current_user.role == "manager" or current_user.role == "admin") %>
+                <%= link_to "Reorder List", home_path %>
+                <%= link_to "Add an Item", new_item_path %>
+                <% end %>
+              <% elsif !logged_in? or (logged_in? and current_user.role == "customer") %>
+                <%= link_to "Boards", boards_path %>
+                <%= link_to "Pieces", pieces_path %>
+                <%= link_to "Clocks", clocks_path %>
+                <%= link_to "Supplies", supplies_path %>
+              <% end %>
+            </div>
+        </div>
 
-  <% end %>
+        <% if logged_in? %>
+          <% if current_user.role == "manager" or current_user.role == "admin" %>
+          <!-- link to users -->
+          <div class = "dropdown" id = "nav_small">
+            <%= link_to "Users", users_path %>
+            <div class="dropdown-content">
+              <%= link_to "Customer List", customers_path %>
+              <%= link_to "Employee List", employees_path %>
+              <%= link_to "Add a User", new_user_path %>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
 
-<% else  %>
-  <%= render :partial => 'partials/customer_nav' %>
-<% end %>
+        <!-- options for purchases -->
+        <% if logged_in? %> 
+          <% if current_user.role == "manager" or current_user.role == "admin" %>
+          <div id="nav_small">
+            <%= link_to "Purchases", purchases_path %>
+          </div>
+          <% end %>
+        <% end %>
+
+        <!-- options for orders -->
+        <% if logged_in? %>
+          <% if current_user.role == "manager" or current_user.role == "admin" %>
+          <div id="nav_small">
+            <%= link_to "Orders", orders_path %>
+          </div>
+          <% end %>
+        <% end %>
+        
+        <!-- options for schools -->
+        <% if logged_in? %> 
+          <% if current_user.role == "manager" or current_user.role == "admin" %>
+          <div id="nav_small">
+            <%= link_to "Schools", schools_path %>
+          </div>
+          <% end %>
+        <% end %>
+
+        <% if logged_in? %>
+          <% if current_user.role == "shipper"%>
+          <div id="nav_small"> <%= link_to "My Profile", profile_path %></div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+  <div id = "divider"> </div>
+  <div id = "divider"> </div>
+
+</div>
+
+

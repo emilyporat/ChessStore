@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'privacy' => 'home#privacy', as: :privacy
   get 'login' => 'sessions#new', :as => :login
   get 'logout' => 'sessions#destroy', :as => :logout
+  # Extra for shipper 
+  get 'profile' => 'home#profile', as: :profile
   
   # Sub-pages for items
   get 'boards' => 'items#boards', as: :boards
@@ -34,7 +36,6 @@ Rails.application.routes.draw do
   get 'cart_index' => 'cart#index', as: :cart_index
   get 'cart_remove/:item_id' => 'cart#remove', as: :cart_remove
   get 'cart_remove_one/:item_id' => 'cart#removeone', as: :cart_remove_one
-  #get 'cart_save/:order_id' => 'cart#checkout', as: :cart_checkout
   
   # Set the root url
   root :to => 'home#home'  

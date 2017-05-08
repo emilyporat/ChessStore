@@ -4,7 +4,9 @@
 
 	<%= render :partial => "users/employees" %>
 
-  <% elsif current_user.role == "admin" %>
+	<%= render :partial => "users/customers_cant_edit" %>
+
+  <% elsif current_user.role == "admin" or current_user.role == "manager" %>
 
     <%= render :partial => "users/employees" %>
 

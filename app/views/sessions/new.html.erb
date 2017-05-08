@@ -1,22 +1,30 @@
-<h3>Log In</h3>
+<div id='login_wrapper'>
+  <div id="login_form">
+    <h3> Returning Customer </h3>
+    <%= form_tag sessions_path do %>
 
-<%= form_tag sessions_path do %>
+    	<div class="control-group">
+        <%= label_tag :email %>
+        <div class="controls">
+          <%= text_field_tag :email, params[:email] %>
+        </div>
+      </div>
 
-	<div class="control-group">
-    <%= label_tag :email %>
-    <div class="controls">
-      <%= text_field_tag :email, params[:email] %>
-    </div>
+    	<div class="control-group">
+        <%= label_tag :password %>
+        <div class="controls">
+          <%= password_field_tag :password %>
+        </div>
+      </div>
+
+      <div class="actions"><%= submit_tag "Log In" %></div>
+    <% end %>
   </div>
+  <div id="divider_vert"></div>
+  <div id="sign_up">
+    <h3> Don't have an account with us? </h3>
+    <div> Create an account with us today to receive all our best offers, new arrivals and exclusives. </div>
 
-	<div class="control-group">
-    <%= label_tag :password %>
-    <div class="controls">
-      <%= password_field_tag :password %>
-    </div>
+    <%= link_to "Sign Up", new_user_path %>
   </div>
-
-  <div class="actions"><%= submit_tag "Log In" %></div>
-<% end %>
-
-<%= link_to "Sign Up", new_user_path %>
+</div>

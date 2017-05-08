@@ -14,11 +14,10 @@
 	    <%= render :partial => "manager_item_details" %>
 	  </div>
   <% end %>
-  <% if logged_in? %>
+  <% if logged_in? and current_user.role == "shipper" %>
       <% role = current_user.role %>
 	  <div class="small-5 columns">
-	    <%= render :partial => "price_history" unless @price_history.empty? or current_user.role == "customer"%>
-	    <%= render :partial => "similar_items" unless @similar_items.empty? or current_user.role == "customer"%>
+	  <%= render :partial => "shipper_item_details" %>
 	  </div>
   <% end %>
 </div>

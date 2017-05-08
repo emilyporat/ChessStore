@@ -6,6 +6,10 @@ class OrdersController < ApplicationController
     @school = School.new
   end
 
+  def index
+    @customer_orders = Order.all.chronological
+  end
+
   def show
     @order = Order.find(params[:id])
     @items = @order.order_items

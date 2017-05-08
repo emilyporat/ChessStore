@@ -1,6 +1,13 @@
 class SchoolsController < ApplicationController
   before_action :check_login
 
+  def index
+    @schools = School.all.alphabetical
+  end
+
+  def edit
+  end
+
   def new
     @school = School.new
   end
