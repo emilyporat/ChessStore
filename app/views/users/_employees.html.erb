@@ -8,6 +8,7 @@
         <th width="225">Name</th>
         <th width="150">Phone Number</th>
         <th width="250">Email</th>
+        <th width="100">Role</th>
         <th width="10"></th>
       </tr>
     </thead>
@@ -17,6 +18,7 @@
           <td><%= user.proper_name %></td>
           <td><%= user.phone %></td>
           <td><%= user.email %></td>
+          <td><%= user.role.capitalize %></td>
           <td><%= link_to "Edit", edit_user_path(user) %></td>
         </tr>
       <% end %>

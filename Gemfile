@@ -36,6 +36,7 @@ gem 'foundation-rails', '5.5.3.2'
 gem 'font-awesome-sass-rails', '3.0.2.2'
 gem 'carrierwave', '1.0.0'
 gem "nested_form"
+gem 'carrierwave'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -10,10 +10,10 @@
 	  <%= render :partial => 'shipper_dashboard' %>
 
 	<% elsif current_user.role == "customer" %>
-	  <%= render :partial => 'customer_dashboard' %>
+	  <%= render :partial => "items/active_items" %>
 
 	<% end %>
 
 <% else  %>
-	<%= render :partial => 'general_home' %>
+	<%= render :partial => "items/active_items" %>
 <% end %>

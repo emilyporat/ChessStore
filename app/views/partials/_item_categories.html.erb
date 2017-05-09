@@ -1,14 +1,55 @@
-<h5> <%= name %> </h5>
+<% if logged_in? %>
 
-<% eval("#{object}").each do |x| %>
+  <% if current_user.role == "manager" or current_user.role == "admin" %>
+    <% unless eval("#{object}").nil? || eval("#{object}").empty? %>
+      <h5><%= name %></h5>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th width="300">Name</th>
+            <th width="100">Price</th>
+            <th width="100">Inventory</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% eval("#{object}").each do |item| %>
+            <tr>
+              <td><%= link_to item.name, item_path(item) %></td>
+              <td><%= number_to_currency item.current_price %></td>
+              <td><%= item.inventory_level %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  <% end %>
 
-  <%= link_to x.name, item_path(x) %> 
-  <br>
-  <%= "$" + sprintf('%.2f', x.current_price).to_s unless x.current_price.nil? %> 
-  <br>
-  <% name = x.name %>
-  <%= link_to "Add to Cart", cart_update_path(x, 1) %> 
-  <br>
-  <br>
+  <% if current_user.role == "customer" or current_user.role == "shipper" %>
+    <% puts "CUSOTMER OR SHIPPER" %>
+    <% unless eval("#{object}").nil? || eval("#{object}").empty? %>
+      <% puts "NOT NIL" %>
+      <div id="category_name"><%= name %></h5></div>
+          <% eval("#{object}").each do |item| %>
+            <div id="item">
+              <div id="item_photo"> <%= image_tag("#{item.id}.jpg") %></div>
+              <div><%= link_to item.name, item_path(item) %></div>
+              <div><%= number_to_currency item.current_price %></div>
+            </div>
+          <% end %>
+      <% end %>
+  <% end %>
+
+<% else %>  
+  <% unless eval("#{object}").nil? || eval("#{object}").empty? %>
+    <div id="category_name"><%= name %></h5></div>
+
+        <% eval("#{object}").each do |item| %>
+          <div id="item">
+            <div id="item_photo"> <%= image_tag("#{item.id}.jpg") %></div>
+            <div><%= link_to item.name, item_path(item) %></div>
+            <div><%= number_to_currency item.current_price %></div>
+          </div>
+        <% end %>
+  <% end %>
 
 <% end %>
