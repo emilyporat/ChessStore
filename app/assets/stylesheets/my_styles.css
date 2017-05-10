@@ -133,6 +133,17 @@
   margin-bottom: 10px;
 }
 
+#divider3 {
+  width: 80%;
+  height: 1px;
+  background-color: black;
+  display: absolute;
+  margin: auto;
+  margin-top: 2px;
+  margin-bottom: 10px;
+  float: left;
+}
+
 #login_top {
   height: 40px;
   background-color: black;

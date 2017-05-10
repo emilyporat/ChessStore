@@ -1,28 +1,33 @@
-<div id="title_big"> Your Shopping Cart </div>
+<div id="title2"> Your Shopping Cart </div>
+<div id="divider3"></div>
 <br>
 
-<div id = "cart_items">
+<% if !@cart_items.empty? %>
+  <div id = "cart_items">
 
-  <% @cart_items.each do |cart_item|  %>
+    <% @cart_items.each do |cart_item|  %>
 
-    <% i = cart_item.item %>
-    <%= link_to i.name, item_path(i) %> 
-    <br>
-    <%= "$" + sprintf('%.2f', i.current_price).to_s unless i.current_price.nil? %> 
-    <br>
-    <%= "Quantity: " + cart_item.quantity.to_s %>
-    <%= link_to " + ", cart_update_path(i.id) %>
-    <%= link_to " - ", cart_remove_one_path(i.id) %>
-    <br>
-    <%= link_to "Remove", cart_remove_path(i.id) %> 
-    <br>
-    <br>
+      <% i = cart_item.item %>
+      <%= link_to i.name, item_path(i) %> 
+      <br>
+      <%= "$" + sprintf('%.2f', i.current_price).to_s unless i.current_price.nil? %> 
+      <br>
+      <%= "Quantity: " + cart_item.quantity.to_s %>
+      <%= link_to " +  ", cart_update_path(i.id) %>
+      <%= link_to "  - ", cart_remove_one_path(i.id) %>
+      <br>
+      <%= link_to "Remove", cart_remove_path(i.id) %> 
+      <br>
+      <br>
 
-  <% end %>
+    <% end %>
 
-  <%= "Grand total " + "$" + sprintf('%.2f', @total).to_s %>
-  <br>
-  <br>
-  <%= link_to "Place order", new_order_path %>
+    <%= "Grand total " + "$" + sprintf('%.2f', @total).to_s %>
+    <br>
+    <br>
+    <%= link_to "Place order", new_order_path, :class => 'button secondary' %>
 
-</div> 
+  </div>  
+<% else %>
+  <div>Your cart is currently empty!</div> 
+<% end %>
