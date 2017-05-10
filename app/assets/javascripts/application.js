@@ -23,6 +23,12 @@ $(function() {
   $(document).foundation('topbar', 'reflow');
 });
 
+// Flash fade
+$(function() {
+   $('.alert-box').fadeIn('normal', function() {
+      $(this).delay(3000).fadeOut();
+   });
+});
 
 function showDiv() {
    document.getElementById('welcomeDiv').style.display = "block";
