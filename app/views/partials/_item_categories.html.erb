@@ -1,12 +1,11 @@
+<br>
 <% if logged_in? %>
-
   <% if current_user.role == "manager" or current_user.role == "admin" %>
     <% unless eval("#{object}").nil? || eval("#{object}").empty? %>
-      <h5><%= name %></h5>
       <table class="table table-striped">
         <thead>
           <tr>
-            <th width="300">Name</th>
+            <th width="100">Name</th>
             <th width="100">Price</th>
             <th width="100">Inventory</th>
           </tr>
@@ -15,7 +14,12 @@
           <% eval("#{object}").each do |item| %>
             <tr>
               <td><%= link_to item.name, item_path(item) %></td>
-              <td><%= number_to_currency item.current_price %></td>
+              <td><% if item.current_price.nil? %>
+                <%= "N/A" %>
+              <% else %>
+                <%= number_to_currency item.current_price %>
+              <% end %>
+              </td>
               <td><%= item.inventory_level %></td>
             </tr>
           <% end %>

@@ -1,6 +1,6 @@
 <div id='login_wrapper'>
   <div id="login_form">
-    <h3> Returning Customer </h3>
+    <div id="title2"> Returning Customer </div><br>
     <%= form_tag sessions_path do %>
 
     	<div class="control-group">
@@ -22,8 +22,10 @@
   </div>
   <div id="divider_vert"></div>
   <div id="sign_up">
-    <h3> Don't have an account with us? </h3>
-    <div> Create an account with us today to receive all our best offers, new arrivals and exclusives. </div>
+    <div id="title2"> Don't have an account with us? </div>
+    <div> Create an account with us today to receive all our best offers, new arrivals and exclusives.
+          Please note that this chess store only ships to schools, not individuals! </div>
+    <br><br><br>
 
     <%= link_to "Sign Up", new_user_path %>
   </div>

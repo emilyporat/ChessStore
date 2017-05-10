@@ -1,9 +1,27 @@
-<% if current_user != nil and (current_user.role == "admin" or current_user.role == "manager")%>
-  <% sidebar = "inactive_items" %>
-<% else %>
-  <% sidebar = nil %>
-<% end %>
-<%= render partial: "partials/index_structure", locals: {model_name: "item", 
-                                                         primary: "active_items", 
-                                                         secondary: nil,
-                                                         sidebar: sidebar} %> 
+<br>
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s2"><a class="active" href="#test1">Boards</a></li>
+      <li class="tab col s2"><a href="#test2">Pieces</a></li>
+      <li class="tab col s2"><a href="#test3">Clocks</a></li>
+      <li class="tab col s2"><a href="#test4">Supplies</a></li>
+      <li class="tab col s2"><a href="#test5">Inactive Items</a></li>
+    </ul>
+  </div>
+  <div id="test1" class="col s12">
+    <%= render partial: "partials/item_categories", locals: {name: "Boards", object: "@boards"} %>
+  </div>
+  <div id="test2" class="col s12">
+    <%= render partial: "partials/item_categories", locals: {name: "Pieces", object: "@pieces"} %>
+  </div>
+  <div id="test3" class="col s12">
+    <%= render partial: "partials/item_categories", locals: {name: "Clocks", object: "@clocks"} %>
+  </div>
+  <div id="test4" class="col s12">
+    <%= render partial: "partials/item_categories", locals: {name: "Supplies", object: "@supplies"} %>
+  </div>
+  <div id="test5" class="col s12">
+    <%= render partial: "partials/item_categories", locals: {name: "Inactive Items", object: "@inactive_items"} %>
+  </div>
+</div>

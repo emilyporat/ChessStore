@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   include ChessStoreHelpers::Cart
+  mount_uploader :photo, PhotoUploader
 
   # List of allowable categories
   CATEGORIES = [['Boards','boards'],['Pieces','pieces'],['Clocks','clocks'],['Supplies','supplies']]
