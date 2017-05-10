@@ -14,7 +14,15 @@
  
   <div class="form-actions">
     <%= f.submit nil, class: 'button' %>
-    <%= link_to 'Cancel', home_path, :class => 'button secondary' %>
+    <% if !logged_in? %>
+      <%= link_to 'Cancel', home_path, :class => 'button secondary' %>
+    <% else %>
+      <% if current_user.role == "customer" or current_user.role == "shipper" %>
+        <%= link_to 'Cancel', profile_path, :class => 'button secondary' %>
+      <% else %>
+        <%= link_to 'Cancel', users_path, :class => 'button secondary' %>
+      <% end %>
+    <% end %>
   </div>
   
 <% end %>  

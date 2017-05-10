@@ -8,11 +8,11 @@ class UsersController < ApplicationController
   end
 
   def customers
-    @customers = User.all.active.customers.alphabetical
+    @customers = User.all.active.customers.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
   def employees
-    @employees = User.all.active.employees.alphabetical
+    @employees = User.all.active.employees.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
   def show

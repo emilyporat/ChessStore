@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @customer_orders = Order.all.chronological
+    @customer_orders = Order.all.chronological.paginate(page: params[:page]).per_page(10)
   end
 
   def show

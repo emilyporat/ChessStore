@@ -3,7 +3,7 @@ class SchoolsController < ApplicationController
   authorize_resource
 
   def index
-    @schools = School.all.alphabetical
+    @schools = School.all.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
   def edit

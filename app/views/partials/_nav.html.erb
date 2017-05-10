@@ -30,18 +30,18 @@
           
           <% if (current_user.role == "manager" or current_user.role == "admin") %>
             <!-- options for items -->
-            <div class = "dropdown" id = "nav_small">
+            <div class = "drop" id = "nav_small">
               <%= link_to "Items", items_path %>
-                <div class="dropdown-content">
+                <div class="drop-content">
                   <%= link_to "Item List", items_path %>              
                   <%= link_to "Reorder List", home_path %>
                   <%= link_to "Add an Item", new_item_path %>
                 </div>
               </div>
             <!-- link to users -->
-            <div class = "dropdown" id = "nav_small">
+            <div class = "drop" id = "nav_small">
               <%= link_to "Users", users_path %>
-              <div class="dropdown-content">
+              <div class="drop-content">
                 <%= link_to "Customer List", customers_path %>
                 <%= link_to "Employee List", employees_path %>
                 <%= link_to "Add a User", new_user_path %>

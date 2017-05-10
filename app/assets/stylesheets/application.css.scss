@@ -17,7 +17,9 @@
  *= require foundation_and_overrides
  *= require simple_form
  */
-
+.pagination a li.active {
+  color: #fff;
+}
  .tl_name {
   width: 225px;
   display: block;

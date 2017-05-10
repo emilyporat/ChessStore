@@ -5,7 +5,7 @@ class Ability
     user ||= User.new
     
     if user.role? :admin
-      can :manage, :all
+      can :manage, :all 
     
     elsif user.role? :manager
       # read any information in the system
@@ -14,6 +14,8 @@ class Ability
       # can create, edit and read employee data.
       can :update, User, role: "shipper"
       can :create, User, role: "shipper"
+      can :customers, User
+      can :employees, User
 
       can :update, User, role: "manager"
       can :create, User, role: "manager"
@@ -48,6 +50,10 @@ class Ability
       # can read information about items, including the inventory 
       # level but not the price history
       can :read, Item
+      can :boards, Item
+      can :pieces, Item
+      can :clocks, Item
+      can :supplies, Item
 
     elsif user.role? :customer
       # read their own personal information in the system

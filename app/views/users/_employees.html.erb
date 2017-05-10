@@ -1,7 +1,7 @@
+<br>
 <% if @employees.empty? %>
   <h4>No active employees at this time.</h4>
 <% else %>
-  <h4>Employees</h4>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -19,10 +19,11 @@
           <td><%= user.phone %></td>
           <td><%= user.email %></td>
           <td><%= user.role.capitalize %></td>
-          <td><%= link_to "Edit", edit_user_path(user) %></td>
+          <td><%= link_to image_tag("edit.png"), edit_user_path(user) %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 <% end %>
+<%= will_paginate @employees, renderer: MaterializePagination::Rails %>
 <p>&nbsp;</p>

@@ -34,6 +34,7 @@ $( function() {
 
 $(document).ready(function(){
   $('ul.tabs').tabs();
+  $(".dropdown-button").dropdown();
 });
 
 $(document).ready(function(){
