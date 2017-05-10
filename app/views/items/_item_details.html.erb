@@ -1,0 +1,73 @@
+
+  <div id="show_page_photo">
+    <% photo = @item.id.to_s + ".jpg" %>
+    <%= image_tag photo %>
+  </div>
+
+  <div id="main_product_info">
+    <div id="item_show_name" style="font-family: r-medium"><%= @item.name %>
+      <p>
+        <div id="price_stuff">
+        <div id="current_price"><%= @item.current_price.nil? ? 'N/A' : number_to_currency(@item.current_price) %>
+        </div>
+        <% if logged_in? %>
+          <%= link_to "Add to cart", cart_update_path(@item) %>
+          <% if current_user.role == "admin" or current_user.role == "manager" %>
+              <div id="new_item_price_link"> 
+                <%= link_to image_tag("edit.png"), new_item_price_path(item_id: @item.id), remote: true %> 
+              </div>
+          <% end %>
+        <% end %>
+        </div>
+      </p>
+    </div>
+      <br>
+      <p>
+        <%= @item.description %>
+      </p>
+  </div>
+
+  <% if logged_in? %>
+    <% if current_user.role != "customer" %>
+
+      <div id="extra_product_info">
+        <p>
+          <b>Inventory Level</b>: <%= @item.inventory_level.nil? ? 'N/A' : @item.inventory_level %>
+        <% if logged_in? %>
+          <% if current_user.role == "admin" or current_user.role == "manager" %>
+            <div id="new_purchase_link"> 
+              <%= link_to "Order more #{@item.name}s", new_purchase_path(item_id: @item.id), remote: true %> 
+            </div>
+          <% end %>
+        <% end %>
+        </p>
+
+        <p>
+          <b>Reorder Level</b>: <%= @item.reorder_level.nil? ? 'N/A' : @item.reorder_level %>
+        </p>
+
+        <p>
+          <b>Category</b>: <%= @item.category.capitalize %>
+        </p>
+
+        <p>
+          <b>Color</b>: <%= @item.color.nil? ? 'N/A' : @item.color %>
+        </p>
+
+        <p>
+          <b>Total weight</b>: <%= @item.weight.nil? ? 'N/A' : @item.weight %> lbs.
+        </p>
+
+        <p>
+          <b>Active</b>: <%= @item.active ? 'Yes' : 'No' %>
+        </p>
+      </div>
+    <% end %>
+    
+    <% if current_user.role == "manager" or current_user.role == "admin" %>
+      <div id="price_history"><%= render :partial => "price_history" %></div>
+      <%= render :partial => "partials/object_options", locals: {model_name: "item", object: @item} %>
+    <% end %>
+    
+
+  <% end %>

@@ -1,0 +1,52 @@
+<% if logged_in? %>
+
+  <% if current_user.role == "manager" or current_user.role == "admin" %>
+    <% unless items.nil? || items.empty? %>
+      <h5><%= item_type.capitalize %></h5>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th width="300">Name</th>
+            <th width="100">Price</th>
+            <th width="100">Inventory</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.each do |item| %>
+            <tr>
+              <td><%= link_to item.name, item_path(item) %></td>
+              <td><%= number_to_currency item.current_price %></td>
+              <td><%= item.inventory_level %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  <% end %>
+
+  <% if current_user.role == "customer" or current_user.role == "shipper" %>
+    <% unless items.nil? || items.empty? %>
+      <div id="category_name"><%= item_type.capitalize %></h5></div>
+          <% items.each do |item| %>
+            <div id="item">
+              <div id="item_photo"> <%= image_tag("#{item.id}.jpg") %></div>
+              <div><%= link_to item.name, item_path(item) %></div>
+              <div><%= number_to_currency item.current_price %></div>
+            </div>
+          <% end %>
+    <% end %>
+  <% end %>
+
+
+<% else %>  
+  <% unless items.nil? || items.empty? %>
+    <div id="category_name"><%= item_type.capitalize %></h5></div>
+        <% items.each do |item| %>
+          <div id="item">
+            <div id="item_photo"> <%= image_tag("#{item.id}.jpg") %></div>
+            <div><%= link_to item.name, item_path(item) %></div>
+            <div><%= number_to_currency item.current_price %></div>
+          </div>
+        <% end %>
+  <% end %>
+<% end %>

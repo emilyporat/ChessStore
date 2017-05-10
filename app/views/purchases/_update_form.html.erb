@@ -1,0 +1,12 @@
+<div id = "update_purchase_form">
+	<%= simple_form_for @purchase, html: { class: 'form-horizontal', multipart: true } do |f| %>
+
+	    <%= f.input :item_id, as: :hidden, input_html: { value: params[:item_id] } %>
+	    <%= f.input :quantity, input_html: {class: "avg"} %>
+
+	    <div class="form-actions">
+	      <%= f.submit nil, :class => 'tiny button radius' %>
+	      <%= link_to 'Cancel', request.referrer, :class => 'tiny button alert radius' %>
+	    </div>
+	<% end %>
+</div>

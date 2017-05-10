@@ -1,0 +1,27 @@
+<br>
+<% unless @customer_orders.nil? || @customer_orders.empty? %>
+	<table class="table table-striped">
+	  <thead>
+	    <tr>
+	      <th width="125">Customer</th>
+	      <th width="125">Date Placed</th>
+	      <th width="125">Total</th>
+	      <th width="220">Shipped To</th>
+	      <th width="125">Status</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @customer_orders.each do |order| %>
+	      <tr>
+	        <td><%= order.user.proper_name %></td>
+	        <td><%= order.date.strftime("%m/%d/%Y") %></td>
+	        <td><%= "$" + sprintf('%.2f', order.grand_total).to_s %></td>
+	        <td><%= order.school.name %></td>
+	        <td><%= order.status %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+<% end %>
+
+<%= will_paginate @customer_orders, renderer: MaterializePagination::Rails %>

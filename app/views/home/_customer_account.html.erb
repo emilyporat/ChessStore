@@ -1,0 +1,15 @@
+<div id="title_big">Welcome back, <%= current_user.proper_name %></div>
+
+<p>Below is your personal information, to which you can update or add:</p>
+
+<div>
+	<%= render :partial => 'partials/account_info' %>	
+</div>
+<br>
+<div>
+	<%= render :partial => 'partials/order_history' %>	
+</div>
+<br>
+<div>
+	<%= render :partial => 'partials/schools_info' %>	
+</div>
