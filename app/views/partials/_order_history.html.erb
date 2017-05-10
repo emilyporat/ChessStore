@@ -9,6 +9,7 @@
         <th width="125">Total</th>
         <th width="220">Shipped To</th>
         <th width="125">Status</th>
+        <th width="125">Cancel</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,10 @@
           <td><%= "$" + sprintf('%.2f', order.grand_total).to_s %></td>
           <td><%= order.school.name %></td>
           <td><%= order.status %></td>
+          <td>
+          <%= link_to(order_path(order), method: 'delete', data: {confirm: "Are you sure you want to cancel this order?"}, class: 'button tiny radius alert') do %>
+            &nbsp;<%= "Cancel order" %> <% end unless order.status == "Shipped" %>
+          </td>
         </tr>
       <% end %>
     </tbody>

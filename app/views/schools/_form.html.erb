@@ -15,7 +15,7 @@
 
       <div class="form-actions">
         <%= f.submit nil, :class => 'button tiny radius' %>
-        <%= link_to 'Cancel', schools_path, :class => 'button tiny alert radius' %>
+        <%= link_to 'Cancel', request.referrer, :class => 'button tiny alert radius' %>
       </div>
     </fieldset>
   <% end %>

@@ -76,6 +76,12 @@ class Ability
     else
       can :read, Item
       can :create, User
+
+      can :read, Item
+      can :boards, Item
+      can :pieces, Item
+      can :clocks, Item
+      can :supplies, Item
     end
 
 

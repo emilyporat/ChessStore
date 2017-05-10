@@ -22,7 +22,6 @@ class OrdersController < ApplicationController
     @order.expiration_month = @order.expiration_month.to_i
     @order.user_id = current_user.id
     @order.grand_total = calculate_cart_items_cost
-    @order.school_id = @school.id
     if @order.save
       @order.pay
       save_each_item_in_cart(@order)
@@ -33,12 +32,21 @@ class OrdersController < ApplicationController
     end
   end
 
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    if @order.destroyed?
+      redirect_to profile_path, notice: "Successfully cancelled your order."
+    else
+      redirect_to profile_path, notice: "Your order can not be cancelled."
+    end
+  end
+
   private
 
   def order_params
     params.require(:order).permit(:date, :school_id, :user_id, :grand_total, 
     :payment_receipt, :credit_card_number, :expiration_month, :expiration_year)
-
   end
   
 end

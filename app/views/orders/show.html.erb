@@ -1,13 +1,17 @@
-<h2> <%= "Order " + @order.id.to_s %> </h2>
+<div id="title2"> <%= "Order " + @order.id.to_s %> </div>
 <br>
 <% order_date = @order.date %>
 
 <% @items.each do |o| %>
   
-  <h5> <%= o.item.name %> </h5>
+  <%= image_tag(o.item.id.to_s+".jpg") %>
+  <div> 
+  <%= o.item.name %> 
+  <br>
   <%= "Quantity: " + o.quantity.to_s %>
   <br>
   <%= "Price: " + "$" + sprintf('%.2f', o.item.price_on_date(order_date)).to_s %>
+  </div>
   <br>
   <br>
   

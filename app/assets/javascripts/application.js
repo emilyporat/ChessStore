@@ -15,6 +15,9 @@
 //= require foundation.min
 //= require_tree .
 //= require jquery_nested_form
+//= require turbolinks
+//= require materialize-sprockets
+//= require materialize-form
 
 $(function() {
   $(document).foundation('topbar', 'reflow');
@@ -36,3 +39,19 @@ $(document).ready(function(){
 $(document).ready(function(){
   $('ul.tabs').tabs('select_tab', 'tab_id');
 });
+
+$(document).ready(function() {
+  window.materializeForm.init()
+});
+
+$(document).ready(function() {
+  $('select').material_select();
+});
+
+$(document).on('turbolinks:load', function() {
+  $('select').material_select();
+})
+
+$('select').material_select('destroy');
+
+
