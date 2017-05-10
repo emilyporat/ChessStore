@@ -1,5 +1,6 @@
 #authorize_resource
 class ItemsController < ApplicationController
+  authorize_resource
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   include ChessStoreHelpers::Cart
 

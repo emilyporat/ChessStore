@@ -1,5 +1,6 @@
 class OrderItemsController < ApplicationController
   before_action :check_login
+  authorize_resource
 
   def complete
   	@order_item = OrderItem.find(params[:order_item_id])

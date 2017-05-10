@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Go away or I shall taunt you a second time."
+    flash[:error] = "Oops! You don't have access to that page."
     redirect_to home_path
   end
 end

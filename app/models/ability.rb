@@ -33,10 +33,10 @@ class Ability
     
     elsif user.role? :shipper
       # read their own personal information in the system
-      can :read, User, user_id: user.id 
+      can :read, User, id: user.id 
 
       # edit their own name, phone, email and password information
-      can :edit, User, user_id: user.id
+      can :edit, User, id: user.id
 
       # can read information related to orders that need to be shipped 
       # from their home page
@@ -51,17 +51,21 @@ class Ability
 
     elsif user.role? :customer
       # read their own personal information in the system
-      can :read, User, user_id: user.id 
+      can :read, User, id: user.id 
 
       # edit their own name, phone, email and password information
-      can :edit, User, user_id: user.id
+      can :edit, User, id: user.id
 
       # can place new orders and can cancel unshipped orders
       can :create, Order
       can :destroy, Order
 
-      # can read information about items
+      # can read information about items 
       can :read, Item
+      can :boards, Item
+      can :pieces, Item
+      can :clocks, Item
+      can :supplies, Item
 
       # can see a list of their own past orders 
       can :read, Order, user_id: user.id

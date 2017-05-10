@@ -6,7 +6,7 @@
       <%= f.input :credit_card_number %>  
       <%= f.input :expiration_month %> 
       <%= f.input :expiration_year %>
-      <%= f.label :school_id %><br />
+      <%= f.label :school_id %>
       <%= f.select :school_id, get_school_options, prompt: "Select ..." %>
       
       <% link_to "Click here to add a new school", new_school_path %>
