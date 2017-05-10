@@ -16,8 +16,7 @@
 //= require_tree .
 //= require jquery_nested_form
 //= require turbolinks
-//= require materialize-sprockets
-//= require materialize-form
+
 
 $(function() {
   $(document).foundation('topbar', 'reflow');
@@ -28,37 +27,4 @@ $(function() {
    $('.alert-box').fadeIn('normal', function() {
       $(this).delay(3000).fadeOut();
    });
-});
-
-function showDiv() {
-   document.getElementById('welcomeDiv').style.display = "block";
-}
-
-$( function() {
-	$( "#tabs" ).tabs();
-} );
-
-$(document).ready(function(){
-  $('ul.tabs').tabs();
-  $(".dropdown-button").dropdown();
-});
-
-$(document).ready(function(){
-  $('ul.tabs').tabs('select_tab', 'tab_id');
-});
-
-$(document).ready(function() {
-  window.materializeForm.init()
-});
-
-$(document).ready(function() {
-  $('select').material_select();
-});
-
-$(document).on('turbolinks:load', function() {
-  $('select').material_select();
-})
-
-$('select').material_select('destroy');
-
-
+}); 

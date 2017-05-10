@@ -2,13 +2,13 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> User </legend>
     <%= f.input :first_name %>
-    <%= f.input :last_name %>
+    <%= f.input :last_name%>
     <%= f.input :email %>
     <%= f.input :phone %>
     <%= f.input :username %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
-    <%= f.input :role, collection: User::ROLES %>
+    <%= f.input :role, collection: User::ROLES  %>
     <%= f.input :active %>
   </fieldset>
  
@@ -17,4 +17,4 @@
     <%= link_to 'Cancel', users_path, :class => 'button secondary' %>
   </div>
   
-<% end %>  
+<% end %>   

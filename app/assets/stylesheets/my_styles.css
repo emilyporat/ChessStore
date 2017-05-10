@@ -116,10 +116,9 @@
 }
 
 #divider {
-  width: 83%;
+  width: 80%;
   height: 1px;
   background-color: black;
-  display: absolute;
   margin: auto;
   margin-bottom: 5px;
 }
@@ -196,7 +195,15 @@
 #item_photo {
   width: 250px;
   height: 300px;
+  opacity: .8;
   background-color: gray;
+     transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+}
+
+#item_photo:hover {
+  opacity: 1;
 }
 
 #category_name {

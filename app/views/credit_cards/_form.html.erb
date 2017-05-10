@@ -2,9 +2,9 @@
   <fieldset>
     <legend><%= controller.action_name.capitalize %> Credit Card </legend>
 
-    <%= f.input :number %>  
-    <%= f.input :expiration_month %> 
-    <%= f.input :expiration_year %>
+    <%= f.input :number, wrapper_html: { class: 'm6 s12' } %>  
+    <%= f.input :expiration_month, wrapper_html: { class: 'm6 s12' } %> 
+    <%= f.input :expiration_year, wrapper_html: { class: 'm6 s12' } %>
 
     <div class="form-actions">
       <%= f.submit nil, :class => 'button tiny radius' %>
