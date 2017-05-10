@@ -1,4 +1,6 @@
 require 'test_helper'
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
 
 class ItemTest < ActiveSupport::TestCase
   # test relationships
