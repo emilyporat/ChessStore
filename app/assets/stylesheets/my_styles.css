@@ -319,3 +319,13 @@
 #signup {
   margin-top: 70px;
 }
+
+/* tabs */
+.w3-button {
+  width: 180px;
+  background-color: white;
+  border: black solid 1px;
+  color: black;
+  font-size: .8em;
+  font-family: 'r-light';
+}

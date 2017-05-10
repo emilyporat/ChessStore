@@ -1,27 +1,27 @@
-<br>
-<div class="row">
-  <div class="col s12">
-    <ul class="tabs">
-      <li class="tab col s2"><a class="active" href="#test1">Boards</a></li>
-      <li class="tab col s2"><a href="#test2">Pieces</a></li>
-      <li class="tab col s3"><a href="#test3">Clocks</a></li>
-      <li class="tab col s2"><a href="#test4">Supplies</a></li>
-      <li class="tab col s3"><a href="#test5">Inactive Items</a></li>
-    </ul>
-  </div>
-  <div id="test1" class="col s12">
-    <%= render partial: "partials/item_categories", locals: {name: "Boards", object: "@boards"} %>
-  </div>
-  <div id="test2" class="col s12">
-    <%= render partial: "partials/item_categories", locals: {name: "Pieces", object: "@pieces"} %>
-  </div>
-  <div id="test3" class="col s12">
-    <%= render partial: "partials/item_categories", locals: {name: "Clocks", object: "@clocks"} %>
-  </div>
-  <div id="test4" class="col s12">
-    <%= render partial: "partials/item_categories", locals: {name: "Supplies", object: "@supplies"} %>
-  </div>
-  <div id="test5" class="col s12">
-    <%= render partial: "partials/item_categories", locals: {name: "Inactive Items", object: "@inactive_items"} %>
-  </div>
+<div class="w3-bar w3-black">
+  <button class="w3-bar-item w3-button" onclick="openItem('Boards')">Boards</button>
+  <button class="w3-bar-item w3-button" onclick="openItem('Pieces')">Pieces</button>
+  <button class="w3-bar-item w3-button" onclick="openItem('Clocks')">Clocks</button>
+  <button class="w3-bar-item w3-button" onclick="openItem('Supplies')">Supplies</button>
+  <button class="w3-bar-item w3-button" onclick="openItem('Inactive')">Inactive Items</button>
+</div>
+
+<div id="Boards" class="item">
+  <%=render partial:"partials/item_categories",locals:{name:"Boards",object:"@boards"}%>
+</div>
+
+<div id="Pieces" class="item" style="display:none">
+  <%= render partial: "partials/item_categories", locals: {name: "Pieces", object: "@pieces"} %> 
+</div>
+
+<div id="Clocks" class="item" style="display:none">
+  <%= render partial: "partials/item_categories", locals: {name: "Clocks", object: "@clocks"} %>
+</div>
+
+<div id="Supplies" class="item" style="display:none">
+  <%= render partial: "partials/item_categories", locals: {name: "Supplies", object: "@supplies"} %>
+</div>
+
+<div id="Inactive" class="item" style="display:none">
+  <%= render partial: "partials/item_categories", locals: {name: "Inactive", object: "@inactive_items"} %>
 </div>

@@ -28,3 +28,16 @@ $(function() {
       $(this).delay(3000).fadeOut();
    });
 }); 
+
+$( function() {
+  $( "#tabs" ).tabs();
+} );
+
+function openItem(cityName) {
+    var i;
+    var x = document.getElementsByClassName("item");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none"; 
+    }
+    document.getElementById(cityName).style.display = "block"; 
+}
