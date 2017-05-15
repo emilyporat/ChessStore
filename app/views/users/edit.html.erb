@@ -1,3 +1,7 @@
-<%= render :partial => "partials/display_form" %>
+<% if current_user.role == "customer" or current_user.role == "shipper" %>
+  <%= render :partial => "partials/display_form" %>
+<% else %>
+  <%= render :partial => "admin_form" %>
+<% end %>
 
 <%= link_to 'Back', home_path %>

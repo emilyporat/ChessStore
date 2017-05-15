@@ -46,9 +46,10 @@ class Ability
 
       # can mark when an item has been packed and shipped
       can :update, OrderItem, shipped_on: nil
+      can :complete, OrderItem, shipped_on: nil
 
       # can read information about items, including the inventory 
-      # level but not the price history
+      # level but not the price history 
       can :read, Item
       can :boards, Item
       can :pieces, Item
@@ -74,7 +75,8 @@ class Ability
       can :supplies, Item
 
       # can see a list of their own past orders 
-      can :read, Order, user_id: user.id
+      can :read, Order, :user_id => user.id
+      cannot :index, Order
 
       # can add their schools
       can :create, School
