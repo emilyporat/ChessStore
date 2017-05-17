@@ -22,4 +22,4 @@ test:
 
 production:
   <<: *default
-  database: ChessStore_production
+  database: db/production.sqlite3
