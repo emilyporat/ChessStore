@@ -76,45 +76,27 @@ group :test do
   gem 'email_spec'
   gem 'nokogiri'
   gem 'simplecov'
-  #gem 'single_test'
+  gem 'single_test'
 end
 
 group :production do
   gem 'pg'
   gem 'factory_girl_rails'
-  # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-  gem 'rails', '4.2.7'
-  # Use SCSS for stylesheets
-  gem 'sass-rails', '~> 5.0'
-  # Use Uglifier as compressor for JavaScript assets
-  gem 'uglifier', '>= 1.3.0'
-  # Use CoffeeScript for .coffee assets and views
-  gem 'coffee-rails', '~> 4.1.0'
-  # See https://github.com/rails/execjs#readme for more supported runtimes
-  # gem 'therubyracer', platforms: :ruby
-
-  # Use jquery as the JavaScript library
-  gem 'jquery-rails'
-  gem 'jquery-turbolinks'
-  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-  gem 'turbolinks'
-  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-  gem 'jbuilder', '~> 2.0'
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', '~> 0.4.0', group: :doc
-
-  # Use ActiveModel has_secure_password
-  gem 'bcrypt', '3.1.11'
-
-
-  # Other gems used
-  gem 'time_date_helpers'
-  gem 'validates_timeliness'
-  gem 'cancancan', '1.15.0'
-  gem 'simple_form'
-  gem 'will_paginate'
-  gem 'foundation-rails', '5.5.3.2'
-  gem 'font-awesome-sass-rails', '3.0.2.2'
-  gem 'carrierwave', '1.0.0'
-  gem "nested_form"
+  gem 'byebug', '9.0.6'
+  gem 'faker'
+  gem 'shoulda'
+  gem 'shoulda-matchers'
+  gem 'minitest'
+  gem 'minitest-rails'
+  gem 'minitest-reporters'
+  gem 'factory_girl_rails'
+  gem 'mocha'
+  gem 'cucumber-rails', require: false
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'email_spec'
+  gem 'nokogiri'
+  gem 'simplecov'
+  gem 'single_test'
 end
